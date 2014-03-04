@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        DIV {
+            padding-left: 10px;
+            padding-top: 30px;
+            height: 100px;
+            width: 200px;
+            font-size: 20px;
+            color: blue;
+            border: 1px solid;
+        }
+    </style>
+
+    <script>
+
+        function checkPromise() {
+            var enteredValue = document.getElementById("textbox1").value;
+
+            var somePromise = new Promise(function (resolve, reject) {
+                resolve(enteredValue == 3);
+                reject(enteredValue == 2);
+            });
+
+            somePromise.then(function (result) {
+                //do something with that value
+                if (result) {
+                    document.getElementById("result").innerHTML = "you are doing good :)";
+                }
+                else {
+                    document.getElementById("result").innerHTML = "aww.. try something like 3";
+                }
+            }, function (result) {console.log("REJECT...");}).catch(function(err){
+                        document.getElementById("result").innerHTML = "catch";
+
+                    })
+        }
+    </script>
+
+
+</head>
+<body>
+<input type="text" id="textbox1">
+<input type="button" onclick="checkPromise()" value="check Promise">
+
+<div id="result"></div>
+
+</body>
+</html>
